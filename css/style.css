@@ -186,12 +186,14 @@ body {
     z-index: -1;
 }
 
-.spoon--main-container a:hover::after {
+.spoon--main-container a:hover::after,
+.spoon--main-container a:focus::after {
     height: 2em;
     transition: height 0.3s ease-in-out;
 }
 
-.spoon--main-container a:hover {
+.spoon--main-container a:hover,
+.spoon--main-container a:focus {
     color: var(--secondary-color);
     text-decoration: none;
     transition: color 0.5s ease;
