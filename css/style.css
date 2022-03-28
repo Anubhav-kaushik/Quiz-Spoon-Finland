@@ -1,0 +1,569 @@
+:root {
+    --primary-color: #F5E063;
+    --secondary-color: #333;
+    --header-height: 150px;
+    --percent-deviation: 0%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    color: var(--secondary-color);
+}
+
+/* General css */
+
+@keyframes fadeInTop {
+    from {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInBottom {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeOutTop {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+}
+
+@keyframes fadeOutBottom {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+}
+
+@keyframes fadeOutLeft {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes fadeOutRight {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}
+
+.spoon--main-container {
+    background-color: white;
+    text-align: center;
+    min-height: 100vh;
+    width: 100%;
+    font-size: 20px;
+    overflow: hidden;
+}
+
+@media screen and (max-width: 500px) {
+    .spoon--main-container {
+        font-size: 18px;
+    }
+}
+
+@keyframes changeScreen {
+    0% {
+        background-position-y: 0;
+    }
+
+    50% {
+        background-position-y: 300vh;
+    }
+
+    100% {
+        background-position-y: 0;
+    }
+}
+
+.spoon--main-container,
+.spoon--main-container * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.spoon--main-container a {
+    text-decoration: none;
+    display: inline-block;
+    color: var(--text-color);
+    width: max-content;
+    position: relative;
+}
+
+.spoon--main-container a::after {
+    content: "";
+    position: absolute;
+    bottom: 0em;
+    left: -0.5%;
+    width: 102%;
+    height: 4px;
+    background-color: var(--primary-color);
+    transition: height 0.3s ease-in-out;
+    z-index: -1;
+}
+
+.spoon--main-container a:hover::after {
+    height: 2em;
+    transition: height 0.3s ease-in-out;
+}
+
+.spoon--main-container a:hover {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: color 0.5s ease;
+}
+
+/* Header */
+
+.spoon--header {
+    max-height: var(--header-height);
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.spoon--header img {
+    height: 90%;
+    max-height: 75px;
+}
+
+/* sections */
+
+.spoon--content>section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4em;
+    width: 90%;
+    min-height: calc(100vh - var(--header-height));
+    max-width: 80ch;
+    margin: auto;
+}
+
+.spoon--content>section>* {
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* section 1 */
+.spoon--main-heading {
+    margin-bottom: 2em;
+}
+
+.spoon--highlighted-circle {
+    position: relative;
+    z-index: 1;
+    margin: auto 0.5em;
+    font-weight: 400;
+    font-size: 0.8em
+}
+
+.spoon--highlighted-circle::before {
+    content: '';
+    position: absolute;
+    top: -0.5em;
+    left: -0.5em;
+    width: 2em;
+    height: 2em;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    z-index: -1;
+}
+
+@media screen and (max-width: 800px) {
+    .spoon--main-heading h1 {
+        width: min-content;
+        line-height: 1.6em;
+    }    
+}
+
+.spoon--sub-heading {
+    border-top: 3px solid var(--secondary-color);
+    padding: 1em;
+    width: 100%;
+}
+
+.spoon--direction {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.spoon--direction>.text {
+    position: relative;
+    width: 100%;
+}
+
+.spoon--direction>.text::before,
+.spoon--direction>.text::after {
+    content: '';
+    position: absolute;
+    top: calc(0.5em - 1.5px);
+    width: calc((100% - 26ch) / 2);
+    height: 3px;
+    background-color: var(--secondary-color);
+}
+
+.spoon--direction>.text::before {
+    left: 0;
+}
+
+.spoon--direction>.text::after {
+    right: 0;
+}
+
+.spoon--direction>.sign {
+    border-top: 0.8em solid var(--secondary-color);
+    border-left: 0.8em solid white;
+    border-right: 0.8em solid white;
+}
+
+.spoon--text-content,
+.spoon--input-content {
+    flex-basis: 100%;
+}
+
+.spoon--text-content {
+    padding-top: 1em;
+}
+
+
+/* Slider and Questions input */
+
+.spoon--input-content {
+    width: 100%;
+}
+
+.spoon--input-main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    gap: 1em;
+}
+
+.spoon--input-main-container .slider-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+}
+
+.spoon--input-main-container .slide-container {
+    flex: 1 1 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.spoon--input-main-container .slide {
+    min-height: 15rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    padding: 0 1em;
+    gap: 1em;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.spoon--input-main-container .pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0 0 1em 0;
+}
+
+.spoon--input-main-container .options {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 1em;
+}
+
+.spoon--input-main-container .options .option {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 1.2em;
+    background-color: var(--primary-color);
+    cursor: pointer;
+    transition: background-color 0.5s ease-in-out,
+        color 0.5s ease-in-out;
+}
+
+.spoon--input-main-container .options .option input[type="radio"] {
+    display: none;
+}
+
+.spoon--input-main-container .options input[type="radio"]:checked+label {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.spoon--input-main-container .options .option label {
+    cursor: pointer;
+    width: 100%;
+    padding: 0.5em;
+}
+
+.spoon--input-main-container .pagination-container .pagination-circle {
+    fill: transparent;
+    stroke: var(--primary-color);
+    transition: fill 0.5s ease-in-out,
+        stroke 0.5s ease-in-out;
+}
+
+.spoon--input-main-container .pagination-container .pagination-circle[data-visited="true"] {
+    fill: var(--primary-color);
+    cursor: pointer;
+    stroke: none;
+}
+
+.spoon--input-main-container .pagination-container .pagination-circle[data-visited="false"] {
+    cursor: not-allowed;
+}
+
+.spoon--input-main-container .pagination-container .pagination-circle[data-active="true"] {
+    fill: var(--secondary-color);
+}
+
+/* section 2 */
+
+.spoon--form-section form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-color);
+    flex-grow: 0;
+    width: 100%;
+    gap: 1.5em;
+    padding: 3em 5%;
+    border-radius: 10px;
+    margin: auto;
+}
+
+.spoon--form-section form > .form-text {
+    margin-bottom: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.spoon--form-section form label {
+    width: 100%;
+    max-width: 45ch;
+}
+
+.spoon--form-section form input {
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    padding: 0.5em 1em;
+    font-size: 1.2em;
+    font-weight: 400;
+    color: var(--secondary-color);
+    background-color: white;
+}
+
+.spoon--form-section form > button {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 0;
+    padding: 0.5em 1em;
+    cursor: pointer;
+    transition: background-color 0.5s ease-in-out,
+        color 0.5s ease-in-out;
+}
+
+
+
+/* section 3 */
+
+section.spoon--output-section {
+    max-width: 105ch;
+    justify-content: center;
+    gap: 1em;
+}
+
+section.spoon--output-section > * {
+    flex-grow: 0;
+}
+
+.spoon--output-section .spoon--result {
+    margin-bottom: 3em;
+}
+
+.spoon--output-section .spoon--result .spoon--result-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    align-self: auto;
+    gap: 3vw;
+    border-top: 3px solid var(--secondary-color);
+    border-bottom: 3px solid var(--secondary-color);
+    padding-block: 2em;
+}
+
+.spoon--output-section .spoon--result .spoon--result-container h2 {
+    line-height: 1.5em;
+}
+
+.spoon--output-section .spoon--result .spoon--result-container p {
+    line-height: 2em;
+}
+
+
+@media screen and (max-width: 900px) {
+    .spoon--output-section .spoon--result .spoon--result-container {
+        flex-wrap: wrap;
+    }
+}
+
+.spoon--output-section .spoon--result .result-text {
+    text-align: left;
+    padding: 0.5em 1em;
+    max-width: 72ch;
+    min-width: 30ch;
+    flex-grow: 1;
+}
+
+@media screen and (max-width: 500px) {
+    .spoon--content>section {
+        width: 95%;
+    }
+
+    .spoon--output-section .spoon--result .result-text {
+        padding: 0.5em 0;
+    }
+
+    .spoon--output-section .spoon--result .result-text p {
+        padding: 0.5em;
+    }
+}
+
+.spoon--output-section .spoon--result .result-image {
+    min-width: 300px;
+    width: 30vh;
+    max-width: 350px;
+    flex-grow: 1;
+}
+
+@media screen and (max-width: 500px) {
+    .spoon--output-section .spoon--result .result-image {
+        width: 100%;
+    }
+}
+
+/* start again button */
+
+.spoon--output-section .spoon--start-again-btn-container p {
+    cursor: pointer;
+    margin-bottom: 1em;
+}

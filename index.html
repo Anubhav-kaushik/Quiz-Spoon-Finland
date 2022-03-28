@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spoon Finland</title>
+    <link rel="stylesheet" href="css/typography.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/data.js"></script>
+    <script src="js/creation.js"></script>
+    <script src="js/slider.js"></script>
+    <style>
+        [data-is-visible="false"] {
+            display: none !important;
+        }
+        
+        [data-fade="in"] {
+            opacity: 0;
+        }
+
+        .slide[data-active="true"] {
+            opacity: 1;
+        }
+
+        .slide[data-active="false"] {
+            opacity: 0;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="spoon--main-container">
+        <section class="spoon--header">
+            <img src="infographics/interactive-names/logo.svg" alt="Finland Spoon">
+        </section>
+        <section class="spoon--content">
+            <section class="spoon--input-section" data-is-visible="true">
+                <div class="spoon--text-content">
+                    <div class="spoon--main-heading" data-fade="">
+                        <h1 data-font-family="Regular" data-font-size="larger2">
+                            Adaptive <span class="spoon--highlighted-circle">Vs</span> Predictive
+                        </h1>
+                    </div>
+                    <div class="spoon--sub-heading" data-fade="">
+                        <h3 data-font-family="Regular" data-font-size="large3">
+                            Are you an adaptive or a predictive content marketer?
+                        </h3>
+                    </div>
+                    <div class="spoon--direction" data-fade="">
+                        <div class="text">
+                            <p data-font-family="Medium" data-font-size="smaller">Answer this quiz to find out</p>
+                        </div>
+                        <div class="sign"></div>
+                    </div>
+                </div>
+                <div class="spoon--input-content">
+                    <div class="spoon--input-main-container" data-fade="">
+                        <div class="slider-container">
+                            <div class="slide-container">
+                                <div class="slide">
+                                    <h3 data-font-family="Medium" data-font-size="large2" >What role do you typically
+                                        play when you're hanging out with a group of people?</h3>
+                                    <!-- Options -->
+                                    <div class="options" data-font-family="Regular" >
+                                        <div class="option">
+                                            <input type="radio" name="group-role" id="group-role-1" value="1">
+                                            <label for="group-role-1">
+                                                <div class="option-content">
+                                                    <p data-font-size="normal">I'm the leader of the group.</p>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="option">
+                                            <input type="radio" name="group-role" id="group-role-2" value="2">
+                                            <label for="group-role-2">
+                                                <div class="option-content">
+                                                    <p data-font-size="normal">I'm the mediator.</p>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="option">
+                                            <input type="radio" name="group-role" id="group-role-3" value="3">
+                                            <label for="group-role-3">
+                                                <div class="option-content">
+                                                    <p data-font-size="normal">I'm the facilitator.</p>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="spoon--form-section" data-is-visible="false">
+                <form onsubmit = "event.preventDefault(); formSubmission(); sendMail();" data-fade="">
+                    <div class="form-text" data-fade="">
+                        <p data-font-family="Regular" data-font-size="large1">
+                            You are just one click away to know your result.
+                        </p>
+                        <p data-font-family="Medium" data-font-size="normal">
+                            Fill out this form and know what type of marketer you are?
+                        </p>
+                    </div>
+                    <label for="name" data-font-family="Regular" data-font-size="small">
+                        <input type="text" name="name" id="name" placeholder="Name" required data-fade="">
+                    </label>
+                   
+                    <label for="email" data-font-family="Regular" data-font-size="small">
+                        <input type="email" name="email" id="email" placeholder="Email" required data-fade="">
+                    </label>
+
+                    <label for="company" data-font-family="Regular" data-font-size="small">
+                        <input type="text" name="company" id="company" placeholder="Company Name" data-fade="">
+                    </label>
+                  
+                    <button data-font-family="Medium" data-font-size="normal" data-fade="">Submit and See Result</button>
+                </form>
+            </section>
+            <section class="spoon--output-section" data-is-visible="false">
+                <div class="spoon--result-heading">
+                    <h1 data-font-family="SemiBold" data-font-size="larger1" data-fade="in">
+                        Result
+                    </h1>
+                </div>
+
+                <div class="spoon--result">
+                    <div class="spoon--result-container">
+                        <div class="result-image" data-fade="in">
+                            <img src="infographics/interactive-names/caution.svg" alt="caution">
+                        </div>
+                        <div class="result-text">
+                            <h2 data-font-family="Regular" data-font-size="large4" data-fade="in">
+                                You're an Extrovert
+                            </h2>
+                            <p data-font-family="Regular" data-font-size="large1" data-fade="in">
+                                You're heavy on the extrovert end of the spectrum. One study found that about 12% of people
+                                are very extroverted like you.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="spoon--start-again-btn-container" data-fade="in">
+                    <p data-font-family="Cabin Bold" data-font-size="normal" data-text-color="red" onclick="replay()">
+                        <span>&lt;&lt;</span><span> Start Again</span>
+                    </p>
+                </div> -->
+
+            </section>
+        </section>
+    </div>
+
+    <script src="js/action.js"></script>
+</body>
+
+</html>

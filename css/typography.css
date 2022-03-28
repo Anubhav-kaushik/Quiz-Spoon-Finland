@@ -1,0 +1,81 @@
+/* Import all fonts */
+@font-face {
+    font-family: 'Graphik Light';
+    src: url(../infographics/fonts/Graphik-Light.otf);
+}
+
+@font-face {
+    font-family: 'Graphik Medium';
+    src: url(../infographics/fonts/Graphik-Medium.otf);
+}
+
+@font-face {
+    font-family: 'Graphik Regular';
+    src: url(../infographics/fonts/Graphik-Regular.otf);
+}
+
+@font-face {
+    font-family: 'Graphik SemiBold';
+    src: url(../infographics/fonts/Graphik-Semibold.otf);
+}
+
+/* Typography */
+[data-font-family="Light"] {
+    font-family: 'Graphik Light';
+}
+
+[data-font-family="Medium"] {
+    font-family: 'Graphik Medium';
+}
+
+[data-font-family="Regular"] {
+    font-family: 'Graphik Regular';
+}
+
+[data-font-family="SemiBold"] {
+    font-family: 'Graphik SemiBold';
+}
+
+[data-font-weight="bold"] {
+    font-weight: bold;
+}
+
+[data-font-weight="regular"] {
+    font-weight: normal;
+}
+
+[data-font-size="smaller"] {
+    font-size: 0.9em;
+}
+
+[data-font-size="small"] {
+    font-size: 0.95em;
+}
+
+[data-font-size="normal"] {
+    font-size: 1em;
+}
+
+[data-font-size="large1"] {
+    font-size: 1.12em;
+}
+
+[data-font-size="large2"] {
+    font-size: 1.21em;
+}
+
+[data-font-size="large3"] {
+    font-size: 1.32em;
+}
+
+[data-font-size="large4"] {
+    font-size: 2.6em;
+}
+
+[data-font-size="larger1"] {
+    font-size: 2.41em;
+}
+
+[data-font-size="larger2"] {
+    font-size: 3.22em;
+}
