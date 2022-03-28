@@ -226,6 +226,7 @@ body {
     min-height: calc(100vh - var(--header-height));
     max-width: 80ch;
     margin: auto;
+    padding-block: 2em;
 }
 
 .spoon--content>section>* {
@@ -522,7 +523,7 @@ section.spoon--output-section > * {
 }
 
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 800px) {
     .spoon--output-section .spoon--result .spoon--result-container {
         flex-wrap: wrap;
     }
@@ -530,7 +531,7 @@ section.spoon--output-section > * {
 
 .spoon--output-section .spoon--result .result-text {
     text-align: left;
-    padding: 0.5em 1em;
+    padding: 0.5em 0.5em 0.5em 0.2em;
     max-width: 72ch;
     min-width: 30ch;
     flex-grow: 1;
@@ -542,10 +543,6 @@ section.spoon--output-section > * {
     }
 
     .spoon--output-section .spoon--result .result-text {
-        padding: 0.5em 0;
-    }
-
-    .spoon--output-section .spoon--result .result-text p {
         padding: 0.5em;
     }
 }
