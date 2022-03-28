@@ -531,7 +531,7 @@ section.spoon--output-section > * {
 
 .spoon--output-section .spoon--result .result-text {
     text-align: left;
-    padding: 0.5em 0.5em 0.5em 0.2em;
+    padding: 0.5em 0.3em 0.5em 0.2em;
     max-width: 72ch;
     min-width: 30ch;
     flex-grow: 1;

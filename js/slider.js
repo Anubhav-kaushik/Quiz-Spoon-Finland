@@ -409,31 +409,38 @@ async function replay() {
 }
 
 async function sendMail() {
-    const formSection = document.querySelector('.spoon--form-section');
-    const outputSection = document.querySelector('.spoon--output-section');
-
     const form = document.querySelector('.spoon--form-section > form');
     const name = form.querySelector('input[name="name"]').value;
     const email = form.querySelector('input[name="email"]').value;
     const company = form.querySelector('input[name="company"]').value;
 
-    // Enter your code here and make sure to change the response
+    startLoading(".spoon--form-section button");
 
-    let response = {status: 200};
+    // $(document).ready(function () {
+    //     $.ajax({
+    //         type: "POST",
+    //         url: 'https://www.visualbest.co/spoon-finland-quiz/mail.php',
+    //         data: {
+    //             name: name,
+    //             email: email,
+    //             company: company
+    //         },
+    //         success: function (resp) {
+    //             formSubmission();
+    //         },
+    //         error: function () {
+    //             alert('Error while sendding email, Please try again');
+    //         }
+    //     });
 
-    return response;
+    // });
+
+    formSubmission();
 }
 
 async function formSubmission() {
     const formSection = document.querySelector('.spoon--form-section');
     const outputSection = document.querySelector('.spoon--output-section');
-
-    let response = await sendMail();
-
-    if (response.status !== 200) {
-        alert('Something went wrong. Please try again later.');
-        return;
-    }
 
     await fadeAll('.spoon--form-section', 'out', 'bottom', 1000);
 
@@ -446,4 +453,17 @@ async function formSubmission() {
 
     fadeIn(outputSection, 'right', 1000);
     await fadeAll('.spoon--output-section', 'in', 'right', 1000);
+}
+
+function startLoading(elementSelector) {
+    const element = document.querySelector(elementSelector);
+    const image = document.createElement("img");
+    image.src = "infographics/interactive-names/loading.svg";
+
+    element.innerHTML = '';
+    element.style.backgroundColor = 'transparent';
+    element.style.cursor = 'default';
+    element.style.pointerEvents = 'none';
+
+    element.appendChild(image);
 }

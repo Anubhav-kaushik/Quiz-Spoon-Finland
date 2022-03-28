@@ -20,3 +20,4 @@ const form = document.querySelector(".spoon--form-section form");
 
 // empty the form
 form.reset();
+
