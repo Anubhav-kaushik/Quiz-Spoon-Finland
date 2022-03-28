@@ -276,19 +276,6 @@ async function runGame(slideSelector, paginationSelector) {
     activatePaginationFunc(slideSelector, paginationSelector);
 }
 
-async function changeBackgroundImage(containerSelector, imageUrl, time, delay = 0) {
-    const container = document.querySelector(containerSelector);
-    container.style.animation = `changeScreen ${time}s ease-in-out ${delay}s forwards`;
-
-    setTimeout(() => {
-        container.style.backgroundImage = `url("${imageUrl}")`;
-    }, time * 1000 / 2);
-
-    await sleep(time + delay);
-
-    container.style.animation = 'none';
-}
-
 // fade out animation
 function fadeOut(element, direction, duration, delay = 0) {
     if (direction === 'left') {
@@ -339,46 +326,6 @@ async function fadeAll(elementSelector, fadeType, direction, duration, delay = 0
 
     await sleep(duration * 1.5 / 1000);
     return;
-}
-
-async function waitForSubmit(submitBtnSelector) {
-    const submitBtn = document.querySelector(`${submitBtnSelector}`);
-    submitBtn.addEventListener('click', () => {
-        submitBtn.disabled = true;
-        submitBtn.innerText = 'Submitting...';
-    });
-
-    while (true) {
-        if (submitBtn.disabled) {
-            return;
-        }
-        await sleep(0.1);
-    }
-}
-
-async function formSubmission() {
-    const formSection = document.querySelector('.spoon--form-section');
-    const outputSection = document.querySelector('.spoon--output-section');
-
-    const form = document.querySelector('.spoon--form-section > form');
-    const name = form.querySelector('input[name="name"]').value;
-    const email = form.querySelector('input[name="email"]').value;
-    const company = form.querySelector('input[name="company"]').value;
-
-    // send mailto: sales.helsinki@spoonagency.fi with subject: "New contact from " + name + "(" + email + ") at " + company;
-
-    // move to result screen
-    await fadeAll('.spoon--form-section', 'out', 'bottom', 1000);
-
-    formSection.dataset.isVisible = 'false';
-    outputSection.dataset.isVisible = 'true';
-
-    window.scrollTo('.spoon--header', {
-        behavior: 'smooth'
-    });
-
-    fadeIn(outputSection, 'right', 1000);
-    await fadeAll('.spoon--output-section', 'in', 'right', 1000);
 }
 
 async function showResult(categoriesScore) {
@@ -459,4 +406,44 @@ async function replay() {
 
     fadeIn(inputSection, 'left', 500);
     await fadeAll('.spoon--input-section', 'in', 'left', 1000);
+}
+
+async function sendMail() {
+    const formSection = document.querySelector('.spoon--form-section');
+    const outputSection = document.querySelector('.spoon--output-section');
+
+    const form = document.querySelector('.spoon--form-section > form');
+    const name = form.querySelector('input[name="name"]').value;
+    const email = form.querySelector('input[name="email"]').value;
+    const company = form.querySelector('input[name="company"]').value;
+
+    // Enter your code here and make sure to change the response
+
+    let response = {status: 200};
+
+    return response;
+}
+
+async function formSubmission() {
+    const formSection = document.querySelector('.spoon--form-section');
+    const outputSection = document.querySelector('.spoon--output-section');
+
+    let response = await sendMail();
+
+    if (response.status !== 200) {
+        alert('Something went wrong. Please try again later.');
+        return;
+    }
+
+    await fadeAll('.spoon--form-section', 'out', 'bottom', 1000);
+
+    formSection.dataset.isVisible = 'false';
+    outputSection.dataset.isVisible = 'true';
+
+    window.scrollTo('.spoon--header', {
+        behavior: 'smooth'
+    });
+
+    fadeIn(outputSection, 'right', 1000);
+    await fadeAll('.spoon--output-section', 'in', 'right', 1000);
 }
