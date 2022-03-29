@@ -370,13 +370,17 @@ async function showResult(categoriesScore) {
         behavior: 'smooth'
     });
 
+    fadeIn(formSection, 'left', 1000);
     await fadeAll('.spoon--form-section', 'in', 'left', 1000);
 
 }
 
 async function replay() {
     const inputSection = document.querySelector('.spoon--input-section');
+    const formSection = document.querySelector('.spoon--form-section');
     const outputSection = document.querySelector('.spoon--output-section');
+
+    const form = formSection.querySelector('form');
 
     appendSlider(questions, ".spoon--input-main-container")
 
@@ -384,10 +388,21 @@ async function replay() {
 
     runGame(slideClass, paginationCirclesClass);
 
-    fadeOut(outputSection, 'left', 1500);
-    await fadeAll('.spoon--output-section', 'out', 'left', 800);
+    fadeOut(outputSection, 'left', 1000);
+    await fadeAll('.spoon--output-section', 'out', 'left', 400);
+    fadeOut(formSection, 'left', 1000);
+    await fadeAll('.spoon--form-section', 'out', 'left', 400);
+    formSection.dataset.isVisible = 'false';
     outputSection.dataset.isVisible = 'false';
     inputSection.dataset.isVisible = 'true';
+
+    form.reset();
+
+    const formBtn = form.querySelector('button');
+    formBtn.style.backgroundColor = '#333333';
+    formBtn.style.pointerEvents = 'auto';
+    formBtn.style.cursor = 'pointer';
+    formBtn.innerHTML = 'Submit and see result';
 
     window.scrollTo('.spoon--header', {
         behavior: 'smooth'
@@ -405,7 +420,7 @@ async function replay() {
     }
 
     fadeIn(inputSection, 'left', 500);
-    await fadeAll('.spoon--input-section', 'in', 'left', 1000);
+    await fadeAll('.spoon--input-section', 'in', 'left', 800);
 }
 
 async function sendMail() {
@@ -430,6 +445,7 @@ async function sendMail() {
     //         },
     //         error: function () {
     //             alert('Error while sendding email, Please try again');
+    //             replay();
     //         }
     //     });
 
