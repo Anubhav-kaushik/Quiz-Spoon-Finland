@@ -392,6 +392,7 @@ body {
     border-radius: 1.2em;
     background-color: var(--primary-color);
     cursor: pointer;
+    max-width: 45ch;
     transition: background-color 0.5s ease-in-out,
         color 0.5s ease-in-out;
 }
